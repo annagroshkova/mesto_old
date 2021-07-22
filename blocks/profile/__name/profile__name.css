@@ -1,0 +1,9 @@
+.profile__name {
+  font-weight: 500;
+  font-size: 27px;
+  line-height: 32px;
+  color: white;
+  margin: 0;
+  padding-bottom: 14px;
+  position: relative;
+}
