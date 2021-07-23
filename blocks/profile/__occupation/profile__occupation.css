@@ -7,7 +7,7 @@
   margin: 0;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 920px) {
   .profile__ocupation {
     font-size: 18px;
     line-height: 22px;

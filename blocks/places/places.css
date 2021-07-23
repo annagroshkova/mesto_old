@@ -1,0 +1,11 @@
+.places {
+  padding-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 282px);
+  grid-auto-columns: 282px;
+  gap: 17px;
+  justify-content: center;
+  justify-items: stretch;
+  align-items: stretch;
+  max-width: 880px;
+}
