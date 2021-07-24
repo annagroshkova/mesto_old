@@ -116,8 +116,11 @@
         <button class="popup__close"></button>
         <fieldset class="popup__form">
           <p class="popup__title">Редактировать профиль</p>
-          <input class="popup__name"></input>
-          <input class="popup__about"></input>
+          <div class="popup__form-items">
+            <input class="popup__name popup__form-item" type="text" name="name" placeholder="Имя"></input>
+            <input class="popup__about popup__form-item" type="text" name="about" placeholder="О себе"></input>
+          </div>
+          <button class="popup__submit" type="submit">Сохранить</button>
         </fieldset>
       </div>
     </div>
