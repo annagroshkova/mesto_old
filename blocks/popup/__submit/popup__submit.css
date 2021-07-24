@@ -1,5 +1,6 @@
 .popup__submit {
-  width: 232px;
+  width: 100%;
+  max-width: 358px;
   height: 46px;
   font-family: inherit;
   font-size: 14px;
@@ -15,4 +16,11 @@
 
 .popup__submit:hover {
   opacity: 80%;
+}
+
+@media screen and (min-width: 920px) {
+  .popup__submit {
+    font-size: 18px;
+    line-height: 22px;
+  }
 }
