@@ -1,3 +1,9 @@
 .popup__form-items {
-  width: 100%;
+  margin-bottom: 18px;
+}
+
+@media screen and (min-width: 920px) {
+  .popup__form-items {
+    margin-bottom: 30px;
+  }
 }

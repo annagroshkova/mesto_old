@@ -111,18 +111,31 @@
       </footer>
     </div>
 
-    <div class="popup popup_opened">
+    <div class="popup">
       <form class="popup__container">
         <button class="popup__close"></button>
-        <fieldset class="popup__form">
-          <p class="popup__title">Редактировать профиль</p>
-          <div class="popup__form-items">
-            <input class="popup__name popup__form-item" type="text" name="name" placeholder="Имя" value="Жак-Ив Кусто"></input>
-            <input class="popup__about popup__form-item" type="text" name="about" placeholder="О себе" value="Исследователь океана"></input>
-          </div>
-          <button class="popup__submit" type="submit">Сохранить</button>
-        </fieldset>
-      </div>
+
+        <p class="popup__title">Редактировать профиль</p>
+
+        <div class="popup__form-items">
+          <input
+            class="popup__name popup__form-item"
+            type="text"
+            name="full-name"
+            placeholder="Имя"
+            value="Жак-Ив Кусто"
+          />
+          <input
+            class="popup__about popup__form-item"
+            type="text"
+            name="ocupation"
+            placeholder="О себе"
+            value="Исследователь океана"
+          />
+        </div>
+
+        <button class="popup__submit" type="submit">Сохранить</button>
+      </form>
     </div>
     <script src="script.js"></script>
   </body>

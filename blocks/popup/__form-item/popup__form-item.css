@@ -1,15 +1,24 @@
 .popup__form-item {
-  display: flex;
   width: 100%;
-  height: 57px;
+  height: 40px;
   box-sizing: border-box;
   border: 0;
   border-bottom: 1px solid rgb(0, 0, 0, 0.2);
   padding: 0;
-  background-color: transparent;
+  margin: 0 0 24px 0;
   font-size: 14px;
   line-height: 17px;
   font-family: inherit;
+}
+
+.popup__form-item:focus {
+  outline: 3px rgb(100, 184, 237) solid;
+}
+
+@media screen and (min-width: 920px) {
+  .popup__form-item {
+    margin: 0 0 20px 0;
+  }
 }
 
 .popup__form-item::placeholder,
