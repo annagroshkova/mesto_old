@@ -6,4 +6,10 @@
   width: 22px;
   padding: 0;
   flex-shrink: 0;
+  transition: opacity 100ms ease-out;
+  cursor: pointer;
+}
+
+.places__like-button:hover {
+  opacity: 50%;
 }
