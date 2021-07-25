@@ -9,10 +9,12 @@
   font-size: 14px;
   line-height: 17px;
   font-family: inherit;
+  transition: outline 50ms ease-out;
 }
 
 .popup__form-item:focus {
-  outline: 3px rgb(100, 184, 237) solid;
+  outline: 3px cornflowerblue solid;
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
 }
 
 @media screen and (min-width: 920px) {
@@ -22,12 +24,9 @@
 }
 
 .popup__form-item::placeholder,
-.popup__form-item::-webkit-input-placeholder,
-.popup__form-item::-moz-placeholder,
-.popup__form-item::-ms-input-placeholder {
+.popup__form-item::-webkit-input-placeholder {
   font-size: 14px;
-  font-family: inherit;
   line-height: 17px;
-  color: rgb(0, 0, 0, 0.2);
-  text-align: end;
+  font-family: inherit;
+  color: rgb(0, 0, 0, 0.3);
 }
