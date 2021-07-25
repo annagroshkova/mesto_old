@@ -1,0 +1,13 @@
+.profile__name {
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: calc(100vw - 80px);
+}
+
+@media screen and (min-width: 880px) {
+  .profile__name {
+    max-width: 430px;
+  }
+}
