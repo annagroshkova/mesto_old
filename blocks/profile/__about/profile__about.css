@@ -5,11 +5,16 @@
   color: white;
   padding-bottom: 36px;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: calc(100vw - 40px);
 }
 
 @media screen and (min-width: 920px) {
   .profile__about {
     font-size: 18px;
     line-height: 22px;
+    max-width: 480px;
   }
 }

@@ -8,8 +8,8 @@ let nameElement = document.querySelector(".profile__name");
 let jobElement = document.querySelector(".profile__about");
 
 editButton.addEventListener("click", function () {
-  nameInput.value = nameElement.textContent;
-  jobInput.value = jobElement.textContent;
+  nameInput.value = nameElement.textContent.trim();
+  jobInput.value = jobElement.textContent.trim();
   popupElement.classList.add("popup_opened");
 });
 
@@ -20,8 +20,8 @@ closePopupButton.addEventListener("click", function () {
 function formSubmitHandler(event) {
   event.preventDefault();
 
-  nameElement.textContent = nameInput.value;
-  jobElement.textContent = jobInput.value;
+  nameElement.textContent = nameInput.value.trim();
+  jobElement.textContent = jobInput.value.trim();
 
   popupElement.classList.remove("popup_opened");
 }
