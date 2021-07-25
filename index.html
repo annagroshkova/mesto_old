@@ -10,7 +10,7 @@
   <body class="body">
     <div class="page">
       <header class="header">
-        <img src="images/logo.svg" class="header__logo" />
+        <img src="images/logo.svg" class="header__logo" alt="Лого" />
       </header>
 
       <main>
@@ -23,7 +23,7 @@
             />
             <div class="profile__description">
               <div class="profile__title">
-                <h2 class="profile__name">Жак-Ив Кусто</h2>
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
                 <button class="profile__edit-button" type="button"></button>
               </div>
 
@@ -41,7 +41,7 @@
               alt="Сёдермальм"
             />
             <div class="places__info">
-              <p class="places__title">Сёдермальм</p>
+              <h2 class="places__title">Сёдермальм</h2>
               <button class="places__like-button" type="button"></button>
             </div>
           </div>
@@ -53,7 +53,7 @@
               alt="Стокгольм вид сверху"
             />
             <div class="places__info">
-              <p class="places__title">Стокгольм вид сверху</p>
+              <h2 class="places__title">Стокгольм вид сверху</h2>
               <button class="places__like-button" type="button"></button>
             </div>
           </div>
@@ -65,7 +65,7 @@
               alt="Центральная станция"
             />
             <div class="places__info">
-              <p class="places__title">Центральная станция</p>
+              <h2 class="places__title">Центральная станция</h2>
               <button class="places__like-button" type="button"></button>
             </div>
           </div>
@@ -77,7 +77,7 @@
               alt="Старый город"
             />
             <div class="places__info">
-              <p class="places__title">Старый город</p>
+              <h2 class="places__title">Старый город</h2>
               <button class="places__like-button" type="button"></button>
             </div>
           </div>
@@ -89,7 +89,7 @@
               alt="Искусство в метро"
             />
             <div class="places__info">
-              <p class="places__title">Искусство в метро</p>
+              <h2 class="places__title">Искусство в метро</h2>
               <button class="places__like-button" type="button"></button>
             </div>
           </div>
@@ -101,7 +101,7 @@
               alt="Ретро-поезд"
             />
             <div class="places__info">
-              <p class="places__title">Ретро-поезд</p>
+              <h2 class="places__title">Ретро-поезд</h2>
               <button class="places__like-button" type="button"></button>
             </div>
           </div>
@@ -113,30 +113,31 @@
     </div>
 
     <div class="popup">
-      <form class="popup__container" name="form">
-        <p class="popup__title">Редактировать профиль</p>
+      <div class="popup__container">
+        <form class="popup__form" name="form">
+          <h2 class="popup__title">Редактировать профиль</h2>
 
-        <div class="popup__form-items">
-          <input
-            class="popup__name popup__form-item"
-            type="text"
-            name="full-name"
-            placeholder="Имя"
-            value="Жак-Ив Кусто"
-          />
-          <input
-            class="popup__about popup__form-item"
-            type="text"
-            name="ocupation"
-            placeholder="О себе"
-            value="Исследователь океана"
-          />
-        </div>
+          <fieldset class="popup__form-items">
+            <input
+              class="popup__form-item popup__form-item_name_fullname"
+              type="text"
+              name="full-name"
+              placeholder="Имя"
+              value="Жак-Ив Кусто"
+            />
+            <input
+              class="popup__form-item popup__form-item_name_occupation"
+              type="text"
+              name="occupation"
+              placeholder="О себе"
+              value="Исследователь океана"
+            />
+          </fieldset>
 
-        <input type="submit" class="popup__submit" value="Сохранить" />
-
+          <button type="submit" class="popup__submit">Сохранить</button>
+        </form>
         <button class="popup__close" type="button"></button>
-      </form>
+      </div>
     </div>
     <script src="scripts/script.js"></script>
   </body>

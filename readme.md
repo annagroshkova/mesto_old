@@ -2,6 +2,7 @@
 
 > Каталог интересных мест
 
+Проект опубликован на gh pages:
 https://annamatvyeyenko.github.io/mesto/
 
 ## Технологии

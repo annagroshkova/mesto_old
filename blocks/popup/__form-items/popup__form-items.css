@@ -1,9 +1,11 @@
 .popup__form-items {
-  margin-bottom: 18px;
+  margin: 0 0 18px;
+  padding: 0;
+  border: 0;
 }
 
 @media screen and (min-width: 920px) {
   .popup__form-items {
-    margin-bottom: 30px;
+    margin: 0 0 30px;
   }
 }
