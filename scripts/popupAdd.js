@@ -5,6 +5,7 @@ const places = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
   {
+
     name: 'Челябинская область',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
   },
@@ -29,14 +30,16 @@ const places = [
 
 
 
-let placesElement = document.querySelector('.places');
-let addButton = document.querySelector(".profile__add-button");
-let popupAdd = document.querySelector(".popup_name_add");
-let closePopupAddButton = popupAdd.querySelector(".popup__close_name_add");
+const placesElement = document.querySelector('.places');
+const addButton = document.querySelector(".profile__add-button");
+const popupAdd = document.querySelector(".popup_name_add");
+const closePopupAddButton = popupAdd.querySelector(".popup__close_name_add");
 
-let addFormElement = document.querySelector(".popup__form_name_add");
-let placeNameInput = addFormElement.querySelector(".popup__form-item_name_picture-title");
-let placeLinkImput = addFormElement.querySelector(".popup__form-item_name_picture-link");
+const addFormElement = document.querySelector(".popup__form_name_add");
+const placeNameInput = addFormElement.querySelector(".popup__form-item_name_picture-title");
+const placeLinkImput = addFormElement.querySelector(".popup__form-item_name_picture-link");
+
+
 
 
 
@@ -49,6 +52,7 @@ function closePopupAdd () {
   popupAdd.classList.remove("popup_opened");
 }
 
+
 function updatePlaces() {
   const placesHTML = places.map((place) => {
     return `
@@ -58,6 +62,7 @@ function updatePlaces() {
         src="${place.link}"
         alt="${place.name}"
       />
+      <button class="places__delete-button"></button>
       <div class="places__info">
         <h2 class="places__title">${place.name}</h2>
         <button class="places__like-button" type="button"></button>
@@ -74,6 +79,7 @@ addButton.addEventListener("click", addClick);
 
 closePopupAddButton.addEventListener("click", closePopupAdd);
 
+
 addFormElement.addEventListener("submit", (event) => {
   event.preventDefault();
   places.unshift(
@@ -85,9 +91,5 @@ addFormElement.addEventListener("submit", (event) => {
 });
 
 updatePlaces();
-
-
-
-
 
 
