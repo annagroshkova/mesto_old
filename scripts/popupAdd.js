@@ -57,12 +57,12 @@ function updatePlaces() {
   const placesHTML = places.map((place) => {
     return `
     <div class="places__place">
-      <img
+      <button type="button" class="places__image-button"><img
         class="places__image"
         src="${place.link}"
         alt="${place.name}"
-      />
-      <button class="places__delete-button"></button>
+      /></button>
+      <button class="places__delete-button" type="button"></button>
       <div class="places__info">
         <h2 class="places__title">${place.name}</h2>
         <button class="places__like-button" type="button"></button>
