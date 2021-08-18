@@ -109,7 +109,8 @@ const placeButtons = document.querySelectorAll('.places__image-button');
     const eventTarget = evt.target;
     popupNameImage.classList.add('popup_opened');
     popupImage.src = eventTarget.src;
-   popupImageTitle.textContent = eventTarget.closest('.places__place').querySelector('.places__title').textContent;
+    popupImage.alt = eventTarget.alt;
+    popupImageTitle.textContent = eventTarget.closest('.places__place').querySelector('.places__title').textContent;
 
   });
  })
