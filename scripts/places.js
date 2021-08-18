@@ -15,7 +15,6 @@
   placeCard.remove();
 }
 
-console.log(deleteButtons);
 
 deleteButtons.forEach (button => {
   button.addEventListener('click', removePlace)

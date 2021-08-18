@@ -38,6 +38,11 @@ const closePopupAddButton = popupAdd.querySelector(".popup__close_name_add");
 const addFormElement = document.querySelector(".popup__form_name_add");
 const placeNameInput = addFormElement.querySelector(".popup__form-item_name_picture-title");
 const placeLinkImput = addFormElement.querySelector(".popup__form-item_name_picture-link");
+const popupNameImage = document.querySelector('.popup_name_image');
+const closePopupImageButton = popupNameImage.querySelector('.popup__close_name_image');
+const popupImage = document.querySelector('.popup__image');
+const popupImageTitle = document.querySelector('.popup__image-title');
+
 
 
 
@@ -52,6 +57,9 @@ function closePopupAdd () {
   popupAdd.classList.remove("popup_opened");
 }
 
+function closePopupNameImage () {
+  popupNameImage.classList.remove("popup_opened");
+}
 
 function updatePlaces() {
   const placesHTML = places.map((place) => {
@@ -75,9 +83,12 @@ function updatePlaces() {
 }
 
 
+
 addButton.addEventListener("click", addClick);
 
 closePopupAddButton.addEventListener("click", closePopupAdd);
+
+closePopupImageButton.addEventListener("click", closePopupNameImage);
 
 
 addFormElement.addEventListener("submit", (event) => {
@@ -91,5 +102,16 @@ addFormElement.addEventListener("submit", (event) => {
 });
 
 updatePlaces();
+
+const placeButtons = document.querySelectorAll('.places__image-button');
+ placeButtons.forEach (button => {
+  button.addEventListener('click', function (evt) {
+    const eventTarget = evt.target;
+    popupNameImage.classList.add('popup_opened');
+    popupImage.src = eventTarget.src;
+   popupImageTitle.textContent = eventTarget.closest('.places__place').querySelector('.places__title').textContent;
+
+  });
+ })
 
 
