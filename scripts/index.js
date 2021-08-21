@@ -76,26 +76,36 @@ const popupNameImage = document.querySelector('.popup_name_image');
 const popupCloseImageButton = popupNameImage.querySelector('.popup__close_name_image');
 const popupImage = document.querySelector('.popup__image');
 const popupImageTitle = document.querySelector('.popup__image-title');
+const placeTemplate = document.querySelector('#place').content
 
 function updatePlaces() {
-  const placesHTML = places.map((place) => {
-    return `
-    <div class="places__place">
-      <button type="button" class="places__image-button"><img
-        class="places__image"
-        src="${place.link}"
-        alt="${place.name}"
-      /></button>
-      <button class="places__delete-button" type="button"></button>
-      <div class="places__info">
-        <h2 class="places__title">${place.name}</h2>
-        <button class="places__like-button" type="button"></button>
-      </div>
-    </div>
-    `
-  }).join('')
+  placesElement.innerHTML = ''
 
-  placesElement.innerHTML = placesHTML
+  places.forEach((place) => {
+    const p = placeTemplate.cloneNode(true)
+    const img = p.querySelector('.places__image')
+    img.src = place.link
+    img.alt = place.name
+    p.querySelector('.places__title').textContent = place.name
+
+    p.querySelector('.places__image-button').addEventListener('click', function () {
+      popupImage.src = place.link;
+      popupImage.alt = place.name;
+      popupImageTitle.textContent = place.name;
+      openPopup(popupNameImage)
+    });
+
+    p.querySelector('.places__like-button').addEventListener('click', function (evt) {
+      const eventTarget = evt.target;
+      eventTarget.classList.toggle('places__like-button_active');
+    });
+
+    p.querySelector('.places__delete-button').addEventListener('click', function (evt) {
+      evt.target.closest('.places__place').remove();
+    });
+
+    placesElement.append(p)
+  })
 }
 
 profileAddButton.addEventListener("click", () => openPopup(popupAdd));
@@ -117,34 +127,3 @@ formAddElement.addEventListener("submit", (event) => {
 
 updatePlaces();
 
-const placeButtons = document.querySelectorAll('.places__image-button');
- placeButtons.forEach (button => {
-  button.addEventListener('click', function (evt) {
-    const eventTarget = evt.target;
-    openPopup(popupNameImage)
-    popupImage.src = eventTarget.src;
-    popupImage.alt = eventTarget.alt;
-    popupImageTitle.textContent = eventTarget.closest('.places__place').querySelector('.places__title').textContent;
-
-  });
- })
-
- const likeButtons = document.querySelectorAll('.places__like-button');
- likeButtons.forEach (button => {
-  button.addEventListener('click', function (evt) {
-    const eventTarget = evt.target;
-    eventTarget.classList.toggle('places__like-button_active');
-
-  });
- })
-
- const deleteButtons = document.querySelectorAll('.places__delete-button');
-
- function removePlace (evt) {
-  const placeCard = evt.target.closest('.places__place');
-  placeCard.remove();
-}
-
-deleteButtons.forEach (button => {
-  button.addEventListener('click', removePlace)
-});
