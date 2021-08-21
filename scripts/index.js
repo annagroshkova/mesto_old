@@ -10,11 +10,15 @@ const jobElement = document.querySelector(".profile__about");
 function editClick () {
   nameInput.value = nameElement.textContent.trim();
   jobInput.value = jobElement.textContent.trim();
-  popupElement.classList.add("popup_opened");
+  openPopup(popupElement)
 }
 
-function closePopup () {
-  popupElement.classList.remove("popup_opened");
+function openPopup(popup) {
+  popup.classList.add("popup_opened")
+}
+
+function closePopup (popup) {
+  popup.classList.remove("popup_opened");
 }
 
 function formSubmitHandler(event) {
@@ -23,11 +27,11 @@ function formSubmitHandler(event) {
   nameElement.textContent = nameInput.value.trim();
   jobElement.textContent = jobInput.value.trim();
 
-  closePopup();
+  closePopup(popupElement);
 }
 
 editButton.addEventListener("click", editClick);
-popupCloseButton.addEventListener("click", closePopup);
+popupCloseButton.addEventListener("click", () => closePopup(popupElement));
 editFormElement.addEventListener("submit", formSubmitHandler);
 
 
@@ -73,18 +77,6 @@ const popupCloseImageButton = popupNameImage.querySelector('.popup__close_name_i
 const popupImage = document.querySelector('.popup__image');
 const popupImageTitle = document.querySelector('.popup__image-title');
 
-function addClick () {
-  popupAdd.classList.add("popup_opened");
-}
-
-function closePopupAdd () {
-  popupAdd.classList.remove("popup_opened");
-}
-
-function closePopupNameImage () {
-  popupNameImage.classList.remove("popup_opened");
-}
-
 function updatePlaces() {
   const placesHTML = places.map((place) => {
     return `
@@ -106,11 +98,11 @@ function updatePlaces() {
   placesElement.innerHTML = placesHTML
 }
 
-profileAddButton.addEventListener("click", addClick);
+profileAddButton.addEventListener("click", () => openPopup(popupAdd));
 
-popupAddCloseButton.addEventListener("click", closePopupAdd);
+popupAddCloseButton.addEventListener("click", () => closePopup(popupAdd));
 
-popupCloseImageButton.addEventListener("click", closePopupNameImage);
+popupCloseImageButton.addEventListener("click", () => closePopup(popupNameImage));
 
 
 formAddElement.addEventListener("submit", (event) => {
@@ -120,7 +112,7 @@ formAddElement.addEventListener("submit", (event) => {
      link: placeLinkImput.value
     })
     updatePlaces();
-    closePopupAdd();
+    closePopup(popupAdd);
 });
 
 updatePlaces();
@@ -129,7 +121,7 @@ const placeButtons = document.querySelectorAll('.places__image-button');
  placeButtons.forEach (button => {
   button.addEventListener('click', function (evt) {
     const eventTarget = evt.target;
-    popupNameImage.classList.add('popup_opened');
+    openPopup(popupNameImage)
     popupImage.src = eventTarget.src;
     popupImage.alt = eventTarget.alt;
     popupImageTitle.textContent = eventTarget.closest('.places__place').querySelector('.places__title').textContent;
@@ -152,7 +144,6 @@ const placeButtons = document.querySelectorAll('.places__image-button');
   const placeCard = evt.target.closest('.places__place');
   placeCard.remove();
 }
-
 
 deleteButtons.forEach (button => {
   button.addEventListener('click', removePlace)
