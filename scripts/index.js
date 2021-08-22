@@ -35,7 +35,7 @@ popupCloseButton.addEventListener("click", () => closePopup(popupElement));
 editFormElement.addEventListener("submit", formSubmitHandler);
 
 
-const places = [
+const initialPlaces = [
   {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -78,34 +78,30 @@ const popupImage = document.querySelector('.popup__image');
 const popupImageTitle = document.querySelector('.popup__image-title');
 const placeTemplate = document.querySelector('#place').content
 
-function updatePlaces() {
-  placesElement.innerHTML = ''
+function createCard(name, link) {
+  const card = placeTemplate.cloneNode(true)
+  const img = card.querySelector('.places__image')
+  img.src = link
+  img.alt = name
+  card.querySelector('.places__title').textContent = name
 
-  places.forEach((place) => {
-    const p = placeTemplate.cloneNode(true)
-    const img = p.querySelector('.places__image')
-    img.src = place.link
-    img.alt = place.name
-    p.querySelector('.places__title').textContent = place.name
+  card.querySelector('.places__image-button').addEventListener('click', function () {
+    popupImage.src = link;
+    popupImage.alt = name;
+    popupImageTitle.textContent = name;
+    openPopup(popupNameImage)
+  });
 
-    p.querySelector('.places__image-button').addEventListener('click', function () {
-      popupImage.src = place.link;
-      popupImage.alt = place.name;
-      popupImageTitle.textContent = place.name;
-      openPopup(popupNameImage)
-    });
+  card.querySelector('.places__like-button').addEventListener('click', function (evt) {
+    const eventTarget = evt.target;
+    eventTarget.classList.toggle('places__like-button_active');
+  });
 
-    p.querySelector('.places__like-button').addEventListener('click', function (evt) {
-      const eventTarget = evt.target;
-      eventTarget.classList.toggle('places__like-button_active');
-    });
+  card.querySelector('.places__delete-button').addEventListener('click', function (evt) {
+    evt.target.closest('.places__place').remove();
+  });
 
-    p.querySelector('.places__delete-button').addEventListener('click', function (evt) {
-      evt.target.closest('.places__place').remove();
-    });
-
-    placesElement.append(p)
-  })
+  return card
 }
 
 profileAddButton.addEventListener("click", () => openPopup(popupAdd));
@@ -117,13 +113,13 @@ popupCloseImageButton.addEventListener("click", () => closePopup(popupNameImage)
 
 formAddElement.addEventListener("submit", (event) => {
   event.preventDefault();
-  places.unshift(
-    {name: placeNameInput.value,
-     link: placeLinkImput.value
-    })
-    updatePlaces();
-    closePopup(popupAdd);
+  const card = createCard(placeNameInput.value, placeLinkImput.value);
+  placesElement.prepend(card);
+  closePopup(popupAdd);
 });
 
-updatePlaces();
+initialPlaces.forEach((place) => {
+  const card = createCard(place.name, place.link)
+  placesElement.append(card)
+})
 
