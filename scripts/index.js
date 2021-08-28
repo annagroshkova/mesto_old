@@ -5,9 +5,20 @@ const popupCloseButton = document.querySelector(".popup__close");
 const editButton = document.querySelector(".profile__edit-button");
 const editFormElement = document.querySelector(".popup__form");
 const nameInput = editFormElement.querySelector(".popup__form-item_name_fullname");
-const jobInput = editFormElement.querySelector(".popup__form-item_name_occupation")
+const jobInput = editFormElement.querySelector(".popup__form-item_name_occupation");
 
-popupEdit.addEventListener('click', () => closePopup(popupEdit))
+
+document.addEventListener('keydown', evt => {
+  if(evt.key !== 'Escape') return
+
+  const popupOpened = document.querySelector('.popup_opened');
+  if(popupOpened) {
+    closePopup(popupOpened);
+  }
+});
+
+
+popupEdit.addEventListener('click', evt => onPopupClick(evt))
 
 
 
@@ -16,7 +27,7 @@ const popupAdd = document.querySelector(".popup_name_add");
 const profileAddButton = document.querySelector(".profile__add-button");
 const popupAddCloseButton = popupAdd.querySelector(".popup__close_name_add");
 
-popupAdd.addEventListener('click', () => closePopup(popupAdd))
+popupAdd.addEventListener('click', evt => onPopupClick(evt));
 
 
 // Popup image
@@ -28,14 +39,28 @@ const popupCloseImageButton = popupNameImage.querySelector('.popup__close_name_i
 const popupImage = document.querySelector('.popup__image');
 const popupImageTitle = document.querySelector('.popup__image-title');
 
-popupNameImage.addEventListener('click', () => closePopup(popupNameImage))
+popupNameImage.addEventListener('click', evt => onPopupClick(evt));
 
 
 // Other
 const nameElement = document.querySelector(".profile__name");
 const jobElement = document.querySelector(".profile__about");
 const placesElement = document.querySelector('.places');
-const placeTemplate = document.querySelector('#place').content
+const placeTemplate = document.querySelector('#place').content;
+
+
+function onPopupClick(evt) {
+  if (evt.target.classList.contains('popup')) {
+    closePopup(evt.target)
+  }
+}
+
+function onKeyPress(evt, popup) {
+  if (evt.key === 'Escape') {
+    closePopup(popup)
+  }
+}
+
 
 function editClick () {
   nameInput.value = nameElement.textContent.trim();
