@@ -51,25 +51,32 @@
               class="popup__form-item popup__form-item_name_fullname"
               type="text"
               name="full-name"
+              id="full-name"
               placeholder="Имя"
               value="Жак-Ив Кусто"
               minlength="2"
               maxlength="40"
               required
+              autocomplete="off"
             />
+            <div class="popup__input-error full-name-error"></div>
+
             <input
               class="popup__form-item popup__form-item_name_occupation"
               type="text"
               name="occupation"
+              id="occupation"
               placeholder="О себе"
               value="Исследователь океана"
               minlength="2"
               maxlength="200"
               required
+              autocomplete="off"
             />
+            <div class="popup__input-error occupation-error"></div>
           </fieldset>
 
-          <button type="submit" class="popup__submit" disabled>Сохранить</button>
+          <button type="submit" class="popup__submit popup__submit_inactive">Сохранить</button>
         </form>
         <button class="popup__close" type="button"></button>
       </div>
@@ -85,19 +92,27 @@
               class="popup__form-item popup__form-item_name_picture-title"
               type="text"
               name="picture-title"
+              id="picture-title"
               placeholder="Название"
               value=""
+              minlength="2"
+              maxlength="30"
+              required
             />
+            <span class="popup__input-error picture-title-error"></span>
             <input
               class="popup__form-item popup__form-item_name_picture-link"
               type="url"
               name="picture-link"
+              id="picture-link"
               placeholder="Ссылка на картинку"
               value=""
+              required
             />
+            <span class="popup__input-error picture-link-error"></span>
           </fieldset>
 
-          <button type="submit" class="popup__submit popup__submit_name_add">Создать</button>
+          <button type="submit" class="popup__submit popup__submit_inactive popup__submit_name_add">Создать</button>
         </form>
         <button class="popup__close popup__close_name_add" type="button"></button>
       </div>

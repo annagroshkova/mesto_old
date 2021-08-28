@@ -5,7 +5,7 @@
   border: 0;
   border-bottom: 1px solid rgb(0, 0, 0, 0.2);
   padding: 0;
-  margin: 0 0 24px 0;
+  margin: 0 0 32px 0;
   font-size: 14px;
   line-height: 17px;
   font-family: inherit;
@@ -24,7 +24,7 @@
 
 @media screen and (min-width: 920px) {
   .popup__form-item {
-    margin: 0 0 20px 0;
+    margin: 0 0 32px 0;
   }
 }
 
