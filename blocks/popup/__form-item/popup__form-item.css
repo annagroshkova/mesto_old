@@ -17,6 +17,11 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0);
 }
 
+.popup__form-item:invalid {
+  border-bottom: 1px solid #FF0000;
+}
+
+
 @media screen and (min-width: 920px) {
   .popup__form-item {
     margin: 0 0 20px 0;

@@ -16,6 +16,13 @@
   opacity: 80%;
 }
 
+.popup__submit:disabled {
+background-color: white;
+color: #E5E5E5;
+border: 1px solid #E5E5E5;
+}
+
+
 @media screen and (min-width: 920px) {
   .popup__submit {
     font-size: 18px;
