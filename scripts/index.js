@@ -1,16 +1,46 @@
-const editButton = document.querySelector(".profile__edit-button");
-const popupElement = document.querySelector(".popup");
+
+// Popup edit
+const popupEdit = document.querySelector(".popup_name_edit");
 const popupCloseButton = document.querySelector(".popup__close");
+const editButton = document.querySelector(".profile__edit-button");
 const editFormElement = document.querySelector(".popup__form");
 const nameInput = editFormElement.querySelector(".popup__form-item_name_fullname");
-const jobInput = editFormElement.querySelector(".popup__form-item_name_occupation");
+const jobInput = editFormElement.querySelector(".popup__form-item_name_occupation")
+
+popupEdit.addEventListener('click', () => closePopup(popupEdit))
+
+
+
+// Popup add
+const popupAdd = document.querySelector(".popup_name_add");
+const profileAddButton = document.querySelector(".profile__add-button");
+const popupAddCloseButton = popupAdd.querySelector(".popup__close_name_add");
+
+popupAdd.addEventListener('click', () => closePopup(popupAdd))
+
+
+// Popup image
+const popupNameImage = document.querySelector('.popup_name_image');
+const formAddElement = document.querySelector(".popup__form_name_add");
+const placeNameInput = formAddElement.querySelector(".popup__form-item_name_picture-title");
+const placeLinkImput = formAddElement.querySelector(".popup__form-item_name_picture-link");
+const popupCloseImageButton = popupNameImage.querySelector('.popup__close_name_image');
+const popupImage = document.querySelector('.popup__image');
+const popupImageTitle = document.querySelector('.popup__image-title');
+
+popupNameImage.addEventListener('click', () => closePopup(popupNameImage))
+
+
+// Other
 const nameElement = document.querySelector(".profile__name");
 const jobElement = document.querySelector(".profile__about");
+const placesElement = document.querySelector('.places');
+const placeTemplate = document.querySelector('#place').content
 
 function editClick () {
   nameInput.value = nameElement.textContent.trim();
   jobInput.value = jobElement.textContent.trim();
-  openPopup(popupElement)
+  openPopup(popupEdit)
 }
 
 function openPopup(popup) {
@@ -27,11 +57,11 @@ function formSubmitHandler(event) {
   nameElement.textContent = nameInput.value.trim();
   jobElement.textContent = jobInput.value.trim();
 
-  closePopup(popupElement);
+  closePopup(popupEdit);
 }
 
 editButton.addEventListener("click", editClick);
-popupCloseButton.addEventListener("click", () => closePopup(popupElement));
+popupCloseButton.addEventListener("click", () => closePopup(popupEdit));
 editFormElement.addEventListener("submit", formSubmitHandler);
 
 
@@ -63,20 +93,6 @@ const initialPlaces = [
   }
 ];
 
-
-const placesElement = document.querySelector('.places');
-const profileAddButton = document.querySelector(".profile__add-button");
-const popupAdd = document.querySelector(".popup_name_add");
-const popupAddCloseButton = popupAdd.querySelector(".popup__close_name_add");
-
-const formAddElement = document.querySelector(".popup__form_name_add");
-const placeNameInput = formAddElement.querySelector(".popup__form-item_name_picture-title");
-const placeLinkImput = formAddElement.querySelector(".popup__form-item_name_picture-link");
-const popupNameImage = document.querySelector('.popup_name_image');
-const popupCloseImageButton = popupNameImage.querySelector('.popup__close_name_image');
-const popupImage = document.querySelector('.popup__image');
-const popupImageTitle = document.querySelector('.popup__image-title');
-const placeTemplate = document.querySelector('#place').content
 
 function createCard(name, link) {
   const card = placeTemplate.cloneNode(true)
