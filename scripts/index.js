@@ -1,26 +1,13 @@
-
 // Popup edit
+
 const popupEdit = document.querySelector(".popup_name_edit");
 const popupCloseButton = document.querySelector(".popup__close");
-const editButton = document.querySelector(".profile__edit-button");
-const editFormElement = document.querySelector(".popup__form");
-const nameInput = editFormElement.querySelector(".popup__form-item_name_fullname");
-const jobInput = editFormElement.querySelector(".popup__form-item_name_occupation");
-
-
-document.addEventListener('keydown', evt => {
-  if(evt.key !== 'Escape') return
-
-  const popupOpened = document.querySelector('.popup_opened');
-  if(popupOpened) {
-    closePopup(popupOpened);
-  }
-});
-
+const profileEditButton = document.querySelector(".profile__edit-button");
+const profileEditFormElement = document.querySelector(".popup__form");
+const nameInput = profileEditFormElement.querySelector(".popup__form-item_name_fullname");
+const jobInput = profileEditFormElement.querySelector(".popup__form-item_name_occupation");
 
 popupEdit.addEventListener('click', evt => onPopupClick(evt))
-
-
 
 // Popup add
 const popupAdd = document.querySelector(".popup_name_add");
@@ -55,28 +42,51 @@ function onPopupClick(evt) {
   }
 }
 
-function onKeyPress(evt, popup) {
-  if (evt.key === 'Escape') {
-    closePopup(popup)
-  }
-}
-
-
 function editClick () {
   nameInput.value = nameElement.textContent.trim();
   jobInput.value = jobElement.textContent.trim();
   openPopup(popupEdit)
 }
 
+function closePopupOnEscape(evt) {
+  if(evt.key !== 'Escape') return;
+
+  const popupOpened = document.querySelector('.popup_opened');
+  if(popupOpened) {
+    closePopup(popupOpened);
+  }
+}
+
 function openPopup(popup) {
-  popup.classList.add("popup_opened")
+  popup.classList.add("popup_opened");
+
+  document.addEventListener('keydown', closePopupOnEscape);
 }
 
 function closePopup (popup) {
   popup.classList.remove("popup_opened");
+
+  document.removeEventListener('keydown', closePopupOnEscape);
+
+  const form = popup.querySelector('.popup__form');
+  if (form) {
+    form.reset();
+  }
+
+  popup.querySelectorAll('.popup__form-item').forEach(input => {
+    input.classList.remove('popup__form-item_type_error');
+  });
+
+  popup.querySelectorAll('.popup__form-item_type_error').forEach(input => {
+    input.classList.remove('popup__form-item_type_error');
+  });
+
+  popup.querySelectorAll('.popup__input-error_visible').forEach(input => {
+    input.classList.remove('popup__input-error_visible');
+  });
 }
 
-function formSubmitHandler(event) {
+function editFormSubmitHandler(event) {
   event.preventDefault();
 
   nameElement.textContent = nameInput.value.trim();
@@ -85,9 +95,9 @@ function formSubmitHandler(event) {
   closePopup(popupEdit);
 }
 
-editButton.addEventListener("click", editClick);
+profileEditButton.addEventListener("click", editClick);
 popupCloseButton.addEventListener("click", () => closePopup(popupEdit));
-editFormElement.addEventListener("submit", formSubmitHandler);
+profileEditFormElement.addEventListener("submit", editFormSubmitHandler);
 
 
 const initialPlaces = [
